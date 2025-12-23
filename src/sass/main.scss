@@ -1,0 +1,11 @@
+@use './base/common';
+@use './base/reset';
+@use './utils/variables';
+@use './mixins/typography';
+@use './components/header';
+@use './components/hero';
+@use './components/benefits';
+@use './components/approach';
+@use './components/services';
+@use './components/contact-form';
+@use './components/foooter.scss';

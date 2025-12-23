@@ -1,0 +1,60 @@
+@use '../utils/breakpoints' as bp;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+li {
+  font-family: 'Roboto', sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+.container {
+  margin: 0 auto;
+  width: 100%;
+
+  @media screen and (max-width: bp.$desktop) {
+    padding: 0 15px;
+  }
+
+  @media screen and (min-width: bp.$mobile-max) and (max-width: bp.$tablet-max) {
+    width: 480px;
+  }
+
+  @media screen and (min-width: bp.$tablet) and (max-width: bp.$desktop-max) {
+    max-width: 768px;
+    padding: 0px 32px;
+  }
+
+  @media screen and (min-width: bp.$desktop-max) {
+    max-width: 1180px;
+  }
+}
+
+.hidden {
+  overflow: hidden;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin-bottom: -1px;
+}

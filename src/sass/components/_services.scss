@@ -1,0 +1,221 @@
+@use '../mixins/layout';
+@use '../mixins/typography';
+@use '../utils/variables';
+@use '../utils/breakpoints' as bp;
+
+.services {
+  &__section {
+    padding: 40px 0;
+    background-color: variables.$main-color__white;
+    @media screen and (min-width: bp.$desktop) {
+      padding: 72px 0;
+    }
+  }
+
+  &__container {
+    @media screen and (min-width: bp.$desktop) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    text-align: center;
+    @include typography.text(36px, 700, 48.6px, variables.$text-color__green);
+
+    @media screen and (min-width: bp.$desktop) {
+      margin-bottom: 32px;
+      @include typography.text(48px, 700, 52.8px, variables.$text-color__green);
+    }
+  }
+
+  &__list {
+    @media screen and (min-width: bp.$desktop) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 20px;
+    padding: 16px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 0 23px 0 rgba(0, 0, 0, 0.08);
+
+    @media screen and (min-width: bp.$desktop) {
+      width: calc((100% - 30px) / 2);
+    }
+
+    &__text {
+      margin-bottom: 12px;
+      font-family: 'Roboto', sans-serif;
+      @include typography.text(22px, 600, 27.5px, variables.$main-color__black);
+    }
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+
+  &__subitem {
+    margin-left: 20px;
+    list-style: disc;
+    font-family: 'Roboto', sans-serif;
+    @include typography.text(18px, 400, 30px, variables.$main-color__black);
+  }
+
+  &__benefits {
+    &__title {
+      margin-bottom: 24px;
+      @include typography.text(32px, 700, 38.4px, variables.$main-color__white);
+
+      @media screen and (min-width: bp.$desktop) {
+        margin-bottom: 16px;
+        @include typography.text(36px, 700, 48.6px, variables.$main-color__white);
+      }
+    }
+
+    &__thumb {
+      position: relative;
+      overflow: hidden;
+      padding: 32px 16px;
+      border-radius: 20px;
+      @media screen and (max-width: bp.$desktop-max) {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
+      @media screen and (min-width: bp.$desktop) {
+        @include layout.space-between-content;
+        padding: 36px 80px;
+      }
+      background: #032817;
+    }
+
+    &__thumb::before {
+      content: '';
+      position: absolute;
+      inset: -120px;
+      pointer-events: none;
+      z-index: 2;
+      background: conic-gradient(
+        from 180deg at 50% 0%,
+        #005830 56.67155742645264deg,
+        #032817 360deg
+      );
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%);
+      filter: blur(12px);
+      opacity: 0.75;
+
+      @media screen and (min-width: bp.$desktop) {
+        filter: blur(30px);
+      }
+    }
+
+    &__thumb::after {
+      content: '';
+      position: absolute;
+      inset: -80px;
+      pointer-events: none;
+      z-index: 1;
+      background: conic-gradient(
+        from 180deg at 50% 0%,
+        #005830 56.67155742645264deg,
+        #032817 360deg
+      );
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 65%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 65%);
+      filter: blur(12px);
+      opacity: 0.8;
+
+      @media screen and (min-width: bp.$desktop) {
+        filter: blur(30px);
+      }
+    }
+
+    &__thumb > * {
+      position: relative;
+      z-index: 5;
+    }
+
+    &__clouds {
+      @media screen and (max-width: bp.$desktop-max) {
+        display: none;
+      }
+      @media screen and (min-width: bp.$desktop) {
+        flex-shrink: 0;
+
+        img {
+          width: 320px;
+          height: auto;
+          display: block;
+        }
+      }
+    }
+
+    &__list {
+      @media screen and (max-width: bp.$desktop-max) {
+        margin-bottom: 12px;
+      }
+
+      @media screen and (min-width: bp.$desktop) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__item {
+      @media screen and (min-width: bp.$desktop) {
+        display: flex;
+      }
+    }
+    &__item:not(:last-child) {
+      @media screen and (max-width: bp.$desktop-max) {
+        margin-bottom: 20px;
+      }
+      @media screen and (min-width: bp.$desktop) {
+        margin-bottom: 12px;
+      }
+    }
+
+    &__text {
+      @include typography.text(18px, 400, 28.8px, variables.$main-color__white);
+    }
+
+    &__icon {
+      @media screen and (max-width: bp.$desktop-max) {
+        width: 20px;
+        height: 20px;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 12px;
+      }
+      @media screen and (min-width: bp.$desktop) {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+      }
+    }
+
+    &__button {
+      display: block;
+      margin: 0 auto;
+      padding: 16px 32px;
+      border-radius: 50px;
+      background-color: variables.$bg-color__light__green;
+      box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+      font-family: 'Roboto', sans-serif;
+      @include typography.text(20px, 600, 24px, variables.$main-color__black);
+
+      @media screen and (min-width: bp.$desktop) {
+        margin: 0;
+      }
+    }
+  }
+}

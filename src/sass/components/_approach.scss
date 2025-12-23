@@ -1,0 +1,158 @@
+@use '../mixins/layout';
+@use '../mixins/typography';
+@use '../utils/variables';
+@use '../utils/breakpoints' as bp;
+
+.approach {
+  &__section {
+    position: relative;
+    padding: 32px 0;
+    background-color: variables.$bg-color__light__green;
+    overflow: hidden;
+
+    @media screen and (min-width: bp.$desktop) {
+      padding-top: 52px;
+      padding-bottom: 0;
+      max-height: 502px;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    @media screen and (min-width: bp.$desktop) {
+      display: flex;
+      justify-content: center;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 0;
+
+      background: url(../images/map.png) no-repeat;
+      @media screen and (max-width: bp.$desktop-max) {
+        background-position: 20% 40%;
+        //   background-size: 520px auto;
+        background-size: 130% auto;
+      }
+      @media screen and (min-width: bp.$desktop) {
+        background-size: contain;
+        background-position: right 30px;
+      }
+    }
+  }
+  &__title {
+    margin-bottom: 16px;
+    color: variables.$main-color__white;
+    @include typography.text(32px, 700, 38.4px, variables.$text-color__green);
+  }
+  &__thumb {
+    margin-bottom: 24px;
+
+    @media screen and (min-width: bp.$desktop) {
+      &__description {
+        margin-right: 83px;
+      }
+    }
+  }
+  &__text {
+    font-family: 'Roboto', sans-serif;
+    @include typography.text(18px, 400, 28.8px, variables.$main-color__black);
+  }
+
+  &__text:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    margin-bottom: 24px;
+
+    @media screen and (min-width: bp.$desktop) {
+      max-height: 420px;
+      padding-bottom: 40px;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+      position: relative;
+
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 78%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 78%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+  }
+
+  &__item {
+    font-family: 'Roboto', sans-serif;
+    min-height: 104px;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 20px;
+    background: variables.$main-color__white;
+    padding: 16px;
+    font-family: 'Roboto', sans-serif;
+    @include typography.text(18px, 400, 24.3px, variables.$main-color__black);
+
+    @media screen and (min-width: bp.$desktop) {
+      scroll-snap-align: start;
+      @include typography.text(18px, 400, 27.4px, variables.$main-color__black);
+    }
+  }
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-right: 12px;
+    margin-top: 6px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto;
+    padding: 16px 32px;
+    @include typography.text(20px, 600, 24px, variables.$main-color__white);
+    border-radius: 50px;
+    background: linear-gradient(90deg, #014f2b 0%, #01522d 100%);
+
+    @media (min-width: bp.$desktop) {
+      display: none;
+    }
+
+    &--desktop {
+      display: none;
+
+      @media (min-width: bp.$desktop) {
+        display: block;
+        padding: 16px 32px;
+        @include typography.text(20px, 600, 24px, variables.$main-color__white);
+        border-radius: 50px;
+        background: linear-gradient(90deg, #014f2b 0%, #01522d 100%);
+      }
+    }
+  }
+}
+
+.accent {
+  font-weight: 700;
+}

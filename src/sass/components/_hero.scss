@@ -1,0 +1,250 @@
+@use '../mixins/layout';
+@use '../mixins/typography';
+@use '../utils/variables';
+@use '../utils/breakpoints' as bp;
+
+.hero {
+  background-color: transparent;
+  &__section {
+    position: relative;
+    overflow: hidden;
+    padding-top: 26px;
+    color: variables.$main-color__white;
+    background-color: #032817;
+    z-index: 0;
+  }
+
+  &__section:before {
+    content: '';
+    position: absolute;
+    width: 304px;
+    height: 304px;
+    border-radius: 50%;
+    background: #005e33;
+    filter: blur(85.7px);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: -1;
+
+    @media screen and (min-width: bp.$desktop) {
+      height: 622px;
+      width: 622px;
+      z-index: -1;
+    }
+  }
+
+  &__container {
+    padding: 0 15px;
+
+    @media screen and (min-width: bp.$desktop) {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+  }
+
+  &__container::before {
+    content: '';
+    position: absolute;
+    background: url('../images/cloud.png') no-repeat center;
+    pointer-events: none;
+    z-index: 1;
+    width: 159px;
+    height: 108px;
+    bottom: 28px;
+    left: 8px;
+    animation: cloud-wind 8s ease-in-out infinite;
+    will-change: transform, opacity;
+    animation-duration: 30s;
+    animation-delay: -12s;
+    opacity: 0.75;
+
+    @media screen and (min-width: bp.$desktop) {
+      left: 7%;
+      bottom: 21px;
+    }
+  }
+
+  &__container::after {
+    @media screen and (min-width: bp.$desktop) {
+      content: '';
+      position: absolute;
+      width: 159px;
+      height: 108px;
+      background: url('../images/cloud.png') no-repeat center;
+      top: 31px;
+      right: 35px;
+      pointer-events: none;
+      flex-shrink: 0;
+      z-index: 1;
+      animation: cloud-wind 8s ease-in-out infinite;
+      will-change: transform, opacity;
+      animation-duration: 24s;
+      animation-delay: -6s;
+    }
+  }
+
+  &__blur {
+    position: absolute;
+  }
+
+  &__partners {
+    &__list {
+      @include layout.centered-content;
+      margin-bottom: 20px;
+
+      @media screen and (min-width: bp.$desktop) {
+        margin-bottom: 22px;
+      }
+    }
+
+    &__item {
+      @include layout.centered-content;
+      background: variables.$main-color__white;
+      box-shadow: 0 4.076px 8.153px 0 rgba(0, 0, 0, 0.1);
+      padding: 7.7px 8.6px;
+      height: 51px;
+      width: 147px;
+      border-radius: 9.6px;
+
+      @media screen and (min-width: bp.$desktop) {
+        height: 92px;
+        width: 249px;
+        padding: 13px;
+        border-radius: 16.3px;
+      }
+    }
+
+    &__item:not(:last-child) {
+      margin-right: 13px;
+    }
+    &__logo img {
+      @media screen and (max-width: bp.$desktop-max) {
+        max-width: 105px;
+        max-height: 36px;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 12px;
+    @include typography.text(40px, 700, 49.6px, variables.$main-color__white);
+
+    @media screen and (max-width: bp.$desktop) {
+      margin: 0 auto;
+      width: 90%;
+      max-width: 320px;
+    }
+
+    @media screen and (min-width: bp.$desktop) {
+      @include typography.text(48px, 700, 67.2px, variables.$main-color__white);
+    }
+
+    &--dark {
+      color: variables.$main-color__black;
+    }
+  }
+
+  &__text {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 40px;
+    @include typography.text(20px, 400, 30px, variables.$main-color__white);
+
+    @media screen and (min-width: bp.$desktop) {
+      margin-bottom: 32px;
+      @include typography.text(24px, 400, 36.5px, variables.$main-color__white);
+    }
+
+    &--dark {
+      color: variables.$main-color__black;
+    }
+  }
+
+  &__cta {
+    display: block;
+    margin: 0 auto;
+    width: 186px;
+    height: 56px;
+    background: variables.$bg-color__light__green;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 50px;
+
+    @include typography.text(20px, 600, 24px, variables.$main-color__green);
+    padding: 16px 32px;
+    margin-bottom: 56px;
+
+    @media screen and (min-width: bp.$desktop) {
+      padding: 16px 24px;
+      margin-bottom: 73px;
+    }
+  }
+
+  &__slide {
+    display: none;
+  }
+
+  &__slide.is-active {
+    display: block;
+  }
+
+  &__dots__thumb {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-bottom: 24px;
+    position: relative;
+    z-index: 3;
+    @media screen and (min-width: bp.$desktop) {
+      gap: 12px;
+      padding-bottom: 30px;
+    }
+  }
+
+  &__dot {
+    width: 30px;
+    height: 9px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &__dot.is-active {
+    background: variables.$main-color__white;
+    width: 30px;
+    height: 9;
+  }
+}
+
+// Animation
+
+//
+@keyframes cloud-wind {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  25% {
+    transform: translate3d(10px, -6px, 0) scale(1.02);
+    opacity: 0.95;
+  }
+  55% {
+    transform: translate3d(-6px, -2px, 0) scale(1.015);
+    opacity: 1;
+  }
+  80% {
+    transform: translate3d(6px, 2px, 0) scale(1.01);
+    opacity: 0.92;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+}

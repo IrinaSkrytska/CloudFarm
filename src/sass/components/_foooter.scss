@@ -1,0 +1,43 @@
+@use '../mixins/layout';
+@use '../mixins/typography';
+@use '../utils/variables';
+@use '../utils/breakpoints' as bp;
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 29px;
+  background-color: variables.$main-color__white;
+
+  &__container {
+    @media screen and (min-width: bp.$desktop) {
+      margin: 0 auto;
+      max-width: 1180px;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  &__thumb {
+    padding: 20px 15px;
+    @include layout.space-between-content;
+  }
+
+  &__logo {
+    display: inline-block;
+  }
+
+  &__logo img {
+    width: 100%;
+    max-width: 188px;
+    height: auto;
+  }
+
+  &__text {
+    font-family: 'Roboto', sans-serif;
+    @include typography.text(14px, 400, 23px, variables.$main-color__black);
+  }
+}

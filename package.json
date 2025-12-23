@@ -2,8 +2,8 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "build:gh": "parcel build src/index.html --public-url /CloudFarm/",
-    "deploy": "npm run build:gh && gh-pages -d dist"
+"build:gh": "parcel build src/index.html --public-url /CloudFarm/ --no-content-hash",
+    "deploy": "npm run build:gh && mkdir -p dist/images && cp src/images/icons.svg dist/images/icons.svg && gh-pages -d dist"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.16.3",

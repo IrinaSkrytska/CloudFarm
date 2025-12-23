@@ -1,2 +1,0 @@
-let e=document.querySelector(".header"),t=document.querySelector(".dropdown"),d=document.getElementById("mobile-menu"),n=document.querySelector(".overlay");function i(){e.classList.remove("is-menu-open"),t.setAttribute("aria-expanded","false"),d.hidden=!0,n.hidden=!0}t.addEventListener("click",()=>{"true"===t.getAttribute("aria-expanded")?i():(e.classList.add("is-menu-open"),t.setAttribute("aria-expanded","true"),d.hidden=!1,n.hidden=!1)}),n.addEventListener("click",i);
-//# sourceMappingURL=CloudFarm.c027e8ad.js.map

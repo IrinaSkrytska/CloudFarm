@@ -355,7 +355,7 @@ img {
   background: url("cloud.f0703a60.png") center no-repeat;
   width: 159px;
   height: 108px;
-  animation: 30s ease-in-out -12s infinite cloud-wind;
+  animation: 12s ease-in-out -12s infinite cloud-wind;
   position: absolute;
   bottom: 28px;
   left: 8px;
@@ -376,7 +376,7 @@ img {
     flex-shrink: 0;
     width: 159px;
     height: 108px;
-    animation: 24s ease-in-out -6s infinite cloud-wind;
+    animation: 6s ease-in-out -6s infinite cloud-wind;
     position: absolute;
     top: 31px;
     right: 35px;
@@ -825,7 +825,7 @@ img {
   }
 }
 
-.accent {
+.text__accent {
   font-weight: 700;
 }
 
@@ -997,6 +997,13 @@ img {
   position: relative;
 }
 
+.services__benefits__clouds {
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  animation: 12s ease-in-out infinite cloud-float;
+}
+
 @media screen and (width <= 1199px) {
   .services__benefits__clouds {
     display: none;
@@ -1084,6 +1091,28 @@ img {
 @media screen and (width >= 1200px) {
   .services__benefits__button {
     margin: 0;
+  }
+}
+
+@keyframes cloud-float {
+  0% {
+    opacity: .9;
+    transform: translate3d(0, 0, 0)scale(1);
+  }
+
+  30% {
+    opacity: .95;
+    transform: translate3d(10px, -6px, 0)scale(1.015);
+  }
+
+  60% {
+    opacity: .92;
+    transform: translate3d(-8px, 4px, 0)scale(1.01);
+  }
+
+  100% {
+    opacity: .9;
+    transform: translate3d(0, 0, 0)scale(1);
   }
 }
 
@@ -1218,6 +1247,9 @@ img {
 
 @media screen and (width >= 1200px) {
   .contact__form__cloud {
+    transform-origin: 50%;
+    will-change: transform, opacity;
+    animation: 12s ease-in-out infinite contact-cloud-float;
     display: block;
   }
 }
@@ -1279,10 +1311,37 @@ img {
   box-shadow: 0 4px 12px #0000001a;
 }
 
+@keyframes contact-cloud-float {
+  0% {
+    opacity: .9;
+    transform: translate3d(0, 0, 0)scale(1);
+  }
+
+  30% {
+    opacity: .95;
+    transform: translate3d(10px, -6px, 0)scale(1.015);
+  }
+
+  60% {
+    opacity: .92;
+    transform: translate3d(-8px, 4px, 0)scale(1.01);
+  }
+
+  100% {
+    opacity: .9;
+    transform: translate3d(0, 0, 0)scale(1);
+  }
+}
+
 .footer {
   background-color: #fff;
   padding-top: 40px;
-  padding-bottom: 29px;
+}
+
+@media screen and (width <= 1199px) {
+  .footer {
+    padding-bottom: 29px;
+  }
 }
 
 @media screen and (width >= 1200px) {

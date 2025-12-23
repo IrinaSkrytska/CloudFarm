@@ -2,11 +2,12 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "build:gh": "parcel build src/index.html --public-url ./",
+    "build:gh": "parcel build src/index.html --public-url /CloudFarm/",
     "deploy": "npm run build:gh && gh-pages -d dist"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.16.3",
+    "gh-pages": "^6.3.0",
     "parcel": "^2.16.3",
     "sass": "^1.97.1"
   }

@@ -4,9 +4,12 @@
 @use '../utils/breakpoints' as bp;
 
 .footer {
-  padding-top: 40px;
-  padding-bottom: 29px;
   background-color: variables.$main-color__white;
+  padding-top: 40px;
+
+  @media screen and (max-width: bp.$desktop-max) {
+    padding-bottom: 29px;
+  }
 
   &__container {
     @media screen and (min-width: bp.$desktop) {

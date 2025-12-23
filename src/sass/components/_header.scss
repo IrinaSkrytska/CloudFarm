@@ -112,6 +112,7 @@
     width: 40px;
     height: 40px;
     display: block;
+    fill: variables.$main-color__black;
 
     &-close {
       display: none;
@@ -121,10 +122,12 @@
 
 .dropdown[aria-expanded='true'] .dropdown__icon-open {
   display: none;
+  fill: variables.$main-color__black;
 }
 
 .dropdown[aria-expanded='true'] .dropdown__icon-close {
   display: block;
+  fill: variables.$main-color__black;
 }
 
 .overlay {

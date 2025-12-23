@@ -16,7 +16,7 @@ function show(i) {
 function startAutoSlide() {
   autoSlide = setInterval(() => {
     show(index + 1);
-  }, 6000);
+  }, 7000);
 }
 
 function stopAutoSlide() {

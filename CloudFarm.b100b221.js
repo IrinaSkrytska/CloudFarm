@@ -1,0 +1,2 @@
+console.log("slider.js loaded"),document.querySelector(".hero__section");let e=document.querySelectorAll(".hero__slide"),o=document.querySelectorAll(".hero__dot"),l=0;function c(c){l=(c+e.length)%e.length,e.forEach((e,o)=>e.classList.toggle("is-active",o===l)),o.forEach((e,o)=>e.classList.toggle("is-active",o===l))}o.forEach((e,o)=>{e.onclick=()=>c(o)}),c(0);
+//# sourceMappingURL=CloudFarm.b100b221.js.map

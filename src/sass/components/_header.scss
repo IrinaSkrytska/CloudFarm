@@ -161,6 +161,9 @@
     @include typography.text(20px, 600, 24px, variables.$main-color__white);
   }
 }
+body.is-menu-open {
+  overflow: hidden;
+}
 
 .header.is-menu-open {
   position: fixed;

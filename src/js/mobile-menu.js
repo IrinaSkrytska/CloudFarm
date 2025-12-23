@@ -5,13 +5,16 @@ const overlay = document.querySelector('.overlay');
 
 function openMenu() {
   header.classList.add('is-menu-open');
+  document.body.classList.add('is-menu-open');
   menuBtn.setAttribute('aria-expanded', 'true');
+
   menu.hidden = false;
   overlay.hidden = false;
 }
 
 function closeMenu() {
   header.classList.remove('is-menu-open');
+  document.body.classList.remove('is-menu-open');
   menuBtn.setAttribute('aria-expanded', 'false');
   menu.hidden = true;
   overlay.hidden = true;

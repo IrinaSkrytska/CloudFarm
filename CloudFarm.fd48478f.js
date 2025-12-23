@@ -714,24 +714,47 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"9eRXX":[function(require,module,exports,__globalThis) {
-console.log("slider.js loaded");
-const slider = document.querySelector(".hero__section");
-const slides = document.querySelectorAll(".hero__slide");
-const dots = document.querySelectorAll(".hero__dot");
+const slider = document.querySelector('.hero__section');
+const slides = document.querySelectorAll('.hero__slide');
+const dots = document.querySelectorAll('.hero__dot');
 let index = 0;
 let startX = 0;
-/* show slide */ function show(i) {
+let autoSlide;
+function show(i) {
     index = (i + slides.length) % slides.length;
-    slides.forEach((s, n)=>s.classList.toggle("is-active", n === index));
-    dots.forEach((d, n)=>d.classList.toggle("is-active", n === index));
+    slides.forEach((s, n)=>s.classList.toggle('is-active', n === index));
+    dots.forEach((d, n)=>d.classList.toggle('is-active', n === index));
 }
-// setInterval(() => {
-//   show(index + 1);
-// }, 10000);
+function startAutoSlide() {
+    autoSlide = setInterval(()=>{
+        show(index + 1);
+    }, 6000);
+}
+function stopAutoSlide() {
+    clearInterval(autoSlide);
+}
 dots.forEach((dot, i)=>{
-    dot.onclick = ()=>show(i);
+    dot.onclick = ()=>{
+        stopAutoSlide();
+        show(i);
+        startAutoSlide();
+    };
+});
+slider.addEventListener('touchstart', (e)=>{
+    startX = e.touches[0].clientX;
+    stopAutoSlide();
+});
+slider.addEventListener('touchend', (e)=>{
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) show(index + 1);
+        else show(index - 1);
+    }
+    startAutoSlide();
 });
 show(0);
+startAutoSlide();
 
 },{}]},["1lc8K","9eRXX"], "9eRXX", "parcelRequire94c2", {})
 
